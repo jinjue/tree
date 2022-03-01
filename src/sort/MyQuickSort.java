@@ -1,11 +1,15 @@
 package sort;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 //快速排序
 public class MyQuickSort {
 
 
+    //递归调用
     public static void quicksort(int[] array, int start,int end){
         if(start >= end) return;
         //int pivot = quicksortdouble(array,start,end);
@@ -13,6 +17,40 @@ public class MyQuickSort {
         quicksort(array,start,pivot-1);
         quicksort(array,pivot+1,end);
     }
+
+    //非递归实现
+    public static void quicksort2(int[] array, int start,int end){
+        Stack<Map<String,Integer>> sortstack = new Stack<Map<String,Integer>>();
+
+        Map param = new HashMap(0);
+        param.put("start",start);
+        param.put("end",end);
+
+        sortstack.push(param);
+
+        while(!sortstack.isEmpty()){//栈空时结束循环
+            Map<String,Integer> element = sortstack.pop();
+
+            int pivot = quicksortsingle(array,element.get("start"),element.get("end"));
+            if(element.get("start")<pivot-1){
+                Map<String,Integer> lowParam = new HashMap<String,Integer>();
+                lowParam.put("start",element.get("start"));
+                lowParam.put("end",pivot-1);
+                sortstack.push(lowParam);
+            }
+
+            if(element.get("end")>pivot+1){
+                Map<String,Integer> highParam = new HashMap<String,Integer>();
+                highParam.put("end",element.get("end"));
+                highParam.put("start",pivot+1);
+                sortstack.push(highParam);
+            }
+
+        }
+
+
+    }
+
     //双边循环法
     public static int quicksortdouble(int[] array, int start,int end){
         int pivot = array[start];
@@ -65,6 +103,13 @@ public class MyQuickSort {
         int[] array = new int[]{4,3,6,2,5,7,8,9,10};
         quicksort(array,0,array.length-1);
         System.out.println("快速排序（单边循环法:  "+ Arrays.toString(array));
+
+        int[] array1 = new int[]{4,3,6,2,5,7,8,9,10};
+        quicksort(array1,0,array.length-1);
+        System.out.println("快速排序（非递归实现:  "+ Arrays.toString(array1));
+
+
+
     }
 
 }
