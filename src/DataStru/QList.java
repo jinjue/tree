@@ -1,18 +1,18 @@
 package DataStru;
 
-import pojo.MyQueue;
+import pojo.mylist;
 
 //用链表实现队列
 public class QList {
-    private MyQueue head;
-    private MyQueue last;
+    private mylist head;
+    private mylist last;
     private int Qlength=0;
 
 
 
     //入队
     public void enterQ(int element) throws Exception{
-        MyQueue myQueue = new MyQueue(element);
+        mylist myQueue = new mylist(element);
         if(Qlength == 0){//队列为空
             head = myQueue;
             last = myQueue;
@@ -27,7 +27,7 @@ public class QList {
 
     //出队
     public void outQ() throws Exception{
-        MyQueue myQueue = last;
+        mylist myQueue = last;
         System.out.println("元素："+myQueue.data+"出队");
         last = last.pre;
         if(last!=null){
@@ -39,7 +39,7 @@ public class QList {
 
     //输出队列
     public void outputQ(){
-        MyQueue begin = last;
+        mylist begin = last;
         while (begin!=null){
             System.out.print(begin.data+" ");
             begin = begin.pre;

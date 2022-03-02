@@ -1,17 +1,17 @@
 package DataStru;
 
 
-import pojo.MyQueue;
+import pojo.mylist;
 
 //双向链表
 public class MyList {
-    private MyQueue head;
-    private MyQueue last;
+    private mylist head;
+    private mylist last;
     private int Qlength=0;
 
     //插入元素
     public void insertList(int data,int index) throws Exception{
-        MyQueue myQueue = new MyQueue(data);
+        mylist myQueue = new mylist(data);
         if(index<0||index>Qlength){
             throw  new Exception("超出链表范围");
         }
@@ -33,7 +33,7 @@ public class MyList {
         }
         else {
             System.out.println("链表中插入元素");
-            MyQueue element = search(index-1);
+            mylist element = search(index-1);
             myQueue.next = element.next;
             element.next = element;
             myQueue.pre = element;
@@ -43,11 +43,11 @@ public class MyList {
     }
 
     //查找链表元素
-    public MyQueue search(int index) throws Exception{
+    public mylist search(int index) throws Exception{
         if(index<0||index>Qlength){
             throw  new Exception("超出链表范围");
         }
-        MyQueue element = head;
+        mylist element = head;
         for(int i=0;i<index;i++){
             element = element.next;
         }
@@ -59,7 +59,7 @@ public class MyList {
         if(index<0||index>Qlength){
             throw  new Exception("超出链表范围");
         }
-        MyQueue delete = null;
+        mylist delete = null;
         if(index == 0){
             System.out.println("链表头删除元素");
             delete = head;
@@ -71,8 +71,8 @@ public class MyList {
         }
         else {
             System.out.println("链表中删除元素");
-            MyQueue element = search(index-1);
-            MyQueue myQueue = element.next.next;
+            mylist element = search(index-1);
+            mylist myQueue = element.next.next;
             delete = element.next;
             element.next = myQueue;
             myQueue.pre = element;
@@ -83,7 +83,7 @@ public class MyList {
 
     //输出链表
     public void output(){
-        MyQueue begin = head;
+        mylist begin = head;
         while (begin!=null){
             System.out.print(begin.data+" ");
             begin = begin.next;

@@ -1,18 +1,18 @@
 package DataStru;
 
-import pojo.MyQueue;
+import pojo.mylist;
 
 //用链表实现栈
 public class MyStack {
-    private MyQueue head;
-    private MyQueue last;
+    private mylist head;
+    private mylist last;
     private int Qlength=0;
 
 
 
     //入栈
     public void enterS(int element) throws Exception{
-        MyQueue myQueue = new MyQueue(element);
+        mylist myQueue = new mylist(element);
         if(Qlength == 0){//队列为空
             head = myQueue;
             last = myQueue;
@@ -27,7 +27,7 @@ public class MyStack {
 
     //出栈
     public void outS() throws Exception{
-        MyQueue myQueue = last;
+        mylist myQueue = last;
         System.out.println("元素："+myQueue.data+"出栈");
         last = last.pre;
         if(last!=null){
@@ -39,7 +39,7 @@ public class MyStack {
 
     //输出栈
     public void outputS(){
-        MyQueue begin = head;
+        mylist begin = head;
         while (begin!=null){
             System.out.print(begin.data+" ");
             begin = begin.next;
