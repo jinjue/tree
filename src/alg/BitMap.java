@@ -2,7 +2,7 @@ package alg;
 
 
 public class BitMap {
-    private long[] words;//每一个word是一个long类型元素，对应一个64位二进制数据
+    private long[] words;//每一个word是一个long类型元素long8个字节，对应一个64位二进制数据
     private int size;//bitmap的位数大小
 
     public BitMap(int size){
@@ -32,11 +32,11 @@ public class BitMap {
         return (words[wordindex] & (1L<<bitindex)) !=0;
     }
 
-    //bitmap的与运算
-    public void bitand(int bit1,int bit2){
-        int word1 = getIndex(bit1);
-        int word2 = getIndex(bit2);
-    }
+//    //bitmap的与运算
+//    public void bitand(int bit1,int bit2){
+//        int word1 = getIndex(bit1);
+//        int word2 = getIndex(bit2);
+//    }
 
 
 
